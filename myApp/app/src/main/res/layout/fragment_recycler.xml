@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@id/fragment"
-    android:background="#e0f2f1"
+    android:background="#80DEEA"
     tools:context="com.example.karth.myapplication.FragmentRecycler">
 
     <android.support.v7.widget.RecyclerView
