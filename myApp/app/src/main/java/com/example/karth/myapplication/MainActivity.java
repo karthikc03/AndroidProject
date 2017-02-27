@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             readLocation();
         }
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void readLocation() {

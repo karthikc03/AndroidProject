@@ -2,6 +2,7 @@ package com.example.karth.myapplication;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,10 +32,10 @@ import java.util.List;
  */
 public class FragmentRecycler extends Fragment {
 
-    private static final String URL_DATA = "http://ergast.com/api/f1/2012.json";
+    private static final String URL_DATA = "http://quocnguyen.16mb.com/products.json";
    private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<ListItem> listItems;
+    private ArrayList<ListItem> listItems;
     final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 10;
 
 
@@ -72,19 +73,28 @@ public class FragmentRecycler extends Fragment {
                         progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(s);
-                            JSONObject mrdata = jsonObject.getJSONObject("MRData");
-                            JSONObject raceTable = mrdata.getJSONObject("RaceTable");
-                            JSONArray array = raceTable.getJSONArray("Races");
+                            JSONArray jsonArray = jsonObject.getJSONArray("products");
 
-                            for (int i = 0; i < array.length(); i++) {
-                                JSONObject o = array.getJSONObject(i);
-                                ListItem item = new ListItem(o.getString("raceName"),
-                                        o.getString("season"),
-                                        o.getString("url"));
-
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject o = jsonArray.getJSONObject(i);
+                                ListItem item = new ListItem(
+                                        o.getString("name"),
+                                        o.getString("price"),
+                                        o.getString("image"));
                                 listItems.add(item);
                             }
-                            adapter = new MyAdapter(listItems, getActivity());
+
+//                            JSONObject raceTable = jsonArray.getJSONObject("RaceTable");
+//                            JSONArray array = raceTable.getJSONArray("Races");
+//
+//                            for (int i = 0; i < array.length(); i++) {
+//                                JSONObject o = array.getJSONObject(i);
+//                                ListItem item = new ListItem(o.getString("raceName"),
+//                                        o.getString("season"),
+//                                        o.getString("url"));
+
+
+                            adapter = new MyAdapter(listItems,getContext() );
                             recyclerView.setAdapter(adapter);
 
                         } catch (JSONException e) {
