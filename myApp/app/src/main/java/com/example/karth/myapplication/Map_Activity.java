@@ -31,7 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.IOException;
 import java.util.List;
 
-public class Map_Activity extends AppCompatActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class Map_Activity extends AppCompatActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
     GoogleMap mGoogleMap;
     GoogleApiClient mGoogleApiClient;
@@ -172,19 +172,6 @@ public class Map_Activity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
 }
 

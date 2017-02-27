@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_mapactivity) {
 
-            startActivity(new Intent(this,Map_Activity.class));
+            //startActivity(new Intent(this,Map_Activity.class));
             Toast.makeText(this,"You entered map activity",Toast.LENGTH_SHORT).show();
            manageMapActivity();
 
@@ -67,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readLocation() {
-        Toast.makeText(this, "Accessing Location", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,Map_Activity.class));
+
+        // Toast.makeText(this, "Accessing Location", Toast.LENGTH_SHORT).show();
     }
 
     @Override
