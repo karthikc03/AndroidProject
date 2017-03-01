@@ -9,4 +9,11 @@
         android:title="@string/activity_maps"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_races"
+        android:orderInCategory="1"
+        android:icon="@drawable/car"
+        android:title="@string/races"
+        app:showAsAction="always" />
+
 </menu>

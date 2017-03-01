@@ -2,7 +2,6 @@ package com.example.karth.myapplication;
 
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,22 +23,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentRecycler extends Fragment {
+public class FragmentRaceRecycler extends Fragment {
 
-    private static final String URL_DATA = "http://quocnguyen.16mb.com/products.json";
-   private RecyclerView recyclerView;
+    private static final String URL_DATA = "http://ergast.com/api/f1/2012.json";
+    private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private ArrayList<ListItem> listItems;
-   // final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 10;
+    //final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 10;
 
 
-    public FragmentRecycler() {
+    public FragmentRaceRecycler() {
         // Required empty public constructor
     }
 
@@ -47,7 +45,8 @@ public class FragmentRecycler extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // RecyclerView recyclerView;
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recycler, container, false);
 
 
@@ -72,25 +71,20 @@ public class FragmentRecycler extends Fragment {
                         progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(s);
-                            JSONArray jsonArray = jsonObject.getJSONArray("products");
+                            JSONObject mrdata = jsonObject.getJSONObject("MRData");
+                            JSONObject raceTable = mrdata.getJSONObject("RaceTable");
+                            JSONArray array = raceTable.getJSONArray("Races");
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject o = jsonArray.getJSONObject(i);
-                                ListItem item = new ListItem(
-                                        o.getString("name"),
-                                        o.getString("price"),
-                                        o.getString("image"));
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject o = array.getJSONObject(i);
+                                ListItem item = new ListItem(o.getString("raceName"),
+                                        o.getString("season"),
+                                        o.getString("url"));
+
                                 listItems.add(item);
                             }
 
-//                            JSONObject raceTable = jsonArray.getJSONObject("RaceTable");
-//                            JSONArray array = raceTable.getJSONArray("Races");
-//
-//                            for (int i = 0; i < array.length(); i++) {
-//                                JSONObject o = array.getJSONObject(i);
-//                                ListItem item = new ListItem(o.getString("raceName"),
-//                                        o.getString("season"),
-//                                        o.getString("url"));
+
 
 
                             adapter = new MyAdapter(listItems,getContext() );
@@ -116,3 +110,4 @@ public class FragmentRecycler extends Fragment {
 
 
 }
+

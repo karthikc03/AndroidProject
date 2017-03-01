@@ -27,7 +27,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.karth.myapplication.WelcomeActivity" />
@@ -60,11 +59,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Details">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.karth.myapplication.MainActivity" />
         </activity>
+        <activity android:name=".Race_Activity"></activity>
     </application>
 
 </manifest>

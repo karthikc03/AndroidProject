@@ -35,16 +35,20 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
 
+        if (id == R.id.action_races) {
+
+            startActivity(new Intent(this,Race_Activity.class));
+
+
+        }
+
+
 
         if (id == R.id.action_mapactivity) {
 
             //startActivity(new Intent(this,Map_Activity.class));
             Toast.makeText(this,"You entered map activity",Toast.LENGTH_SHORT).show();
            manageMapActivity();
-
-
-
-
 
         }
         return super.onOptionsItemSelected(item);
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         new AlertDialog.Builder(this).
                                 setTitle("Access Location_PERMISSION Denied").
-                                setMessage("You Denied Access Location Permission").show();
+                                setMessage("To use Maps Please provide permssions to access Maps.").show();
 
                     }
 
