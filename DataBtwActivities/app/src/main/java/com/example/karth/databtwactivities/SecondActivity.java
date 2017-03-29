@@ -20,6 +20,8 @@ EditText editText;
         button = (Button) findViewById(R.id.button2);
         editText = (EditText) findViewById(R.id.editText2);
         textView = (TextView) findViewById(R.id.textView2);
+
+        //getIntent is used to get data from first activity  to this activity
         String str = getIntent().getStringExtra("SendName");
         textView.setText(str);
     }
