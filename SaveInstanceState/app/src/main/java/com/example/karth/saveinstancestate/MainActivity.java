@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
         count = 0;
        textView.setText("Count: " + count);
 
+//without using restoreInstanceState, we can use this condition
+        if(savedInstanceState != null){
+            count = savedInstanceState.getInt("myCount", 0);
+            textView.setText("Count: "+count);
+        }
+
     }
 
     public void increment(View view) {
@@ -34,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("myCount",count);
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        count = savedInstanceState.getInt("myCount", 0);
-        textView.setText("Count: "+count);
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        count = savedInstanceState.getInt("myCount", 0);
+//        textView.setText("Count: "+count);
+//    }
 }
