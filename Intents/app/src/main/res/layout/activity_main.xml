@@ -77,7 +77,7 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Write Text To Share"
@@ -88,7 +88,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/button5"
